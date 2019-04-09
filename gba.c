@@ -8,12 +8,14 @@ void waitForVBlank(void) {
 
     // Write a while loop that loops until we're NOT in vBlank anymore:
     // (This prevents counting one VBlank more than once if your app is too fast)
+    while (*SCANLINECOUNTER > 160);
 
     // Write a while loop that keeps going until we're in vBlank:
+    while (*SCANLINECOUNTER < 160);
 
     // Finally, increment the vBlank counter:
-    while (*SCANLINECOUNTER > 160);
-    while (*SCANLINECOUNTER < 160);
+    vBlankCounter++;
+
 
 }
 
