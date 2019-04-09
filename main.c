@@ -22,7 +22,7 @@ typedef enum {
 
 int main(void) {
     // TA-TODO: Manipulate REG_DISPCNT here to set Mode 3.
-
+    REG_DISPCNT = MODE3 | BG2_ENABLE;
     GBAState state = START;
 
     // We store the "previous" and "current" states.
@@ -35,6 +35,7 @@ int main(void) {
     while (1) {
         // Load the current state of the buttons
         currentButtons = BUTTONS;
+        waitForVBlank();
 
         // TA-TODO: Manipulate the state machine below as needed.
         switch(state) {
