@@ -34,6 +34,7 @@ void setPixel(int x, int y, u16 color) {
     UNUSED(x);
     UNUSED(y);
     UNUSED(color);
+    int x = 5;
 }
 
 void drawRectDMA(int x, int y, int width, int height, volatile u16 color) {
