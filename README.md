@@ -1,4 +1,4 @@
-# GBA-game
+# Hungry Rockets for Gameboy Advance
 Gameboy game created for use with GBA VM. Developed in C
 
 Hungry Rockets!
