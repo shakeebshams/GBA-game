@@ -1,7 +1,13 @@
-#ifndef LOGIC_H
-#define LOGIC_H
+
 
 #include "gba.h"
+
+typedef struct {
+	int row;
+	int col;
+	int id;
+} Gate;
+
 
 typedef struct {
     // Store whether or not the game is over in this member:
@@ -17,6 +23,10 @@ typedef struct {
     * int points;
     *
     */
+	int win;
+	int round;
+    Gate fallingGate;
+	
 
 } AppState;
 
@@ -33,6 +43,10 @@ typedef struct {
 * } Snake;
 *
 */
+typedef struct {
+    int row;
+    int col;
+} Coordinate;
 
 // This function can initialize an unused AppState struct.
 void initializeAppState(AppState *appState);
@@ -43,4 +57,3 @@ AppState processAppState(AppState *currentAppState, u32 keysPressedBefore, u32 k
 // If you have anything else you need accessible from outside the logic.c
 // file, you can add them here. You likely won't.
 
-#endif

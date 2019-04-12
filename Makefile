@@ -1,7 +1,7 @@
 ################################################################################
 # These are variables for the GBA toolchain build
 # You can add others if you wish to
-# ***** YOUR NAME HERE *****
+# shakeeb shams
 ################################################################################
 
 # TA-TODO: Put your game name here.
@@ -15,7 +15,7 @@ PROGNAME = Game
 # that will be compiled into your program. For example
 # if you have main.c and myLib.c then in the following
 # line you would put main.o and myLib.o
-OFILES = gba.o font.o draw.o logic.o main.o images/garbage.o
+OFILES = gba.o font.o logic.o draw.o main.o images/garbage.o images/hogwarts.o images/begin0.o images/apple.o images/win.o
 
 ################################################################################
 # These are various settings used to make the GBA toolchain work
@@ -62,7 +62,7 @@ med : LDFLAGS += $(LDRELEASE)
 med : $(PROGNAME).gba
 	@echo "[EXECUTE] Running emulator Mednafen"
 	@echo "          Please see emulator.log if this fails"
-# Default mednafen keybinds are "Gaaarbage", in the words of Farzam
+# Default mednafen keybinds are "Gaaarbage," in the words of Farzam
 	@mkdir -p ~/.mednafen/
 	@cp mednafen-09x.cfg ~/.mednafen/
 	@mednafen $(MEDOPT) $(PROGNAME).gba >emulator.log 2>&1

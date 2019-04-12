@@ -1,5 +1,3 @@
-#ifndef DRAW_H
-#define DRAW_H
 
 #include "logic.h"
 
@@ -17,5 +15,5 @@ void drawAppState(AppState *state);
 
 // If you have anything else you need accessible from outside the graphics.c
 // file, you can add them here. You likely won't.
+void drawRectangle(int row, int col, int width, int height, const u16 *image);
 
-#endif

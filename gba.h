@@ -1,5 +1,3 @@
-#ifndef GBA_H
-#define GBA_H
 
 // ---------------------------------------------------------------------------
 //                       USEFUL TYPEDEFS
@@ -33,7 +31,7 @@ typedef unsigned char u8;
 #define BLACK 0
 #define GRAY COLOR(5, 5, 5)
 
-// The size of the GBA Screen
+//The size of the GBA Screen
 #define WIDTH 240
 #define HEIGHT 160
 
@@ -54,14 +52,15 @@ extern volatile unsigned short *videoBuffer;
 #define BUTTON_R		(1<<8)
 #define BUTTON_L		(1<<9)
 
-#define BUTTONS *(volatile u32 *) 0x4000130
-#define KEY_DOWN(key, buttons) (~(buttons) & (key))
+#define BUTTONS *(volatile u32 *)0x4000130
+#define KEY_DOWN(key, buttons)  (~(buttons) & (key))
 
 // TA-TODO: COMPLETE THIS MACRO.
 // Remember that a button is recently pressed if it wasn't pressed in the last
 // input (oldButtons) but is pressed in the current input. Use the KEY_DOWN
 // macro to check if the button was pressed in the inputs.
-#define KEY_JUST_PRESSED(key, buttons, oldbuttons)
+#define KEY_JUST_PRESSED(key, buttons, oldbuttons)	((oldbuttons) & ~(buttons) & (key))
+//((KEY_DOWN(key, buttons)) && (!KEY_DOWN(key, oldbuttons)))
 
 // ---------------------------------------------------------------------------
 //                       DMA
@@ -127,7 +126,7 @@ void waitForVBlank(void);
  *
  * @param  min bottom end of range.
  * @param  max top end of range.
- * @return random number in the given range.
+ * @return     random number in the given range.
  */
 int randint(int min, int max);
 
@@ -136,8 +135,8 @@ int randint(int min, int max);
 // ---------------------------------------------------------------------------
 void setPixel(int x, int y, u16 color);
 void drawRectDMA(int x, int y, int width, int height, volatile u16 color);
-void drawFullScreenImageDMA(u16 *image);
-void drawImageDMA(int x, int y, int width, int height, u16 *image);
+void drawFullScreenImageDMA(const u16 *image);
+void drawImageDMA(int x, int y, int width, int height, const u16 *image);
 void fillScreenDMA(volatile u16 color);
 void drawChar(int col, int row, char ch, u16 color);
 void drawString(int col, int row, char *str, u16 color);
@@ -147,4 +146,3 @@ void drawCenteredString(int col, int row, int width, int height, char *str, u16 
 // This is in the font.c file. You can replace the font if you want.
 extern const unsigned char fontdata_6x8[12288];
 
-#endif

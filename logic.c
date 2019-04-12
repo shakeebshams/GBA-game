@@ -1,10 +1,17 @@
 #include "logic.h"
+#include "images/begin0.h"
+
+
+
 
 void initializeAppState(AppState* appState) {
     // TA-TODO: Initialize everything that's part of this AppState struct here.
     // Suppose the struct contains random values, make sure everything gets
     // the value it should have when the app begins.
-    UNUSED(appState);
+	appState->gameOver = 0;
+	appState->win = 0;
+
+	appState->round = 0;
 }
 
 // TA-TODO: Add any process functions for sub-elements of your app here.
@@ -42,9 +49,28 @@ AppState processAppState(AppState *currentAppState, u32 keysPressedBefore, u32 k
      */
 
     AppState nextAppState = *currentAppState;
+	if (KEY_JUST_PRESSED(BUTTON_RIGHT, keysPressedNow, keysPressedBefore)) {
+		nextAppState.round++;
+		
+	}
 
-    UNUSED(keysPressedBefore);
-    UNUSED(keysPressedNow);
+	if (KEY_JUST_PRESSED(BUTTON_LEFT, keysPressedNow, keysPressedBefore) ) {
+		nextAppState.round++;
+
+	}
+
+	if (KEY_JUST_PRESSED(BUTTON_UP, keysPressedNow, keysPressedBefore)) {
+		nextAppState.round++;
+	}
+
+	if (KEY_JUST_PRESSED(BUTTON_DOWN, keysPressedNow, keysPressedBefore) ) {
+		nextAppState.round++;
+	}
+
+	
+	if (nextAppState.round == 10) nextAppState.win = 1;
+    //UNUSED(keysPressedBefore);
+    //UNUSED(keysPressedNow);
 
     return nextAppState;
 }
